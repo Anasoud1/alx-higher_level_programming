@@ -7,4 +7,3 @@ def max_integer(my_list=[]):
         if m < i:
             m = i
     return m
-
