@@ -1,6 +1,6 @@
 #include "lists.h"
 #include <stdlib.h>
-
+#include <stdio.h>
 /**
  * is_palindrome - function that checks if a list is a palindrome
  * @head: head of the list
@@ -10,31 +10,38 @@
 int is_palindrome(listint_t **head)
 {
 	listint_t *start, *curr = *head;
-	int i, j, len = 0;
-	char *tmp;
+	int i, l, flag = 0, len = 0;
+	int *tmp;
 
 	while (curr)
 	{
 		curr = curr->next;
 		len++;
 	}
-	tmp = malloc(sizeof(char) * (len + 1));
+	if (len % 2 == 0)
+		l = len / 2;
+	else
+		l = len / 2, flag = 1;
+	tmp = malloc(sizeof(int) * (l + 1));
 	if (!tmp)
 		return (-1);
 	start = *head;
-	for (i = 0; i < len; i++)
+	for (i = 0; i < l; i++)
 	{
 		tmp[i] = start->n;
 		start = start->next;
 	}
 	tmp[i] = '\0';
-	for (i = 0, j = len - 1; i < len / 2; i++, j--)
+	if (flag == 1)
+		start = start->next;
+	for (i = l - 1; i >= 0; i--)
 	{
-		if (tmp[i] != tmp[j])
+		if (tmp[i] != start->n)
 		{
 			free(tmp);
 			return (0);
 		}
+		start = start->next;
 	}
 	free(tmp);
 	return (1);
