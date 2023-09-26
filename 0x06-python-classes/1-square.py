@@ -3,6 +3,13 @@
 
 
 class Square:
-    '''constructor method'''
+    '''Define a square'''
+
     def __init__(self, size):
+        '''Constructor
+
+        Args:
+            size (int): the new size
+        '''
+
         self.__size = size
