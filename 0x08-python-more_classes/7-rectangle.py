@@ -71,4 +71,3 @@ class Rectangle:
         '''function that print msg after deleting an instance of Rectangle'''
         print("Bye rectangle...")
         Rectangle.number_of_instances -= 1
-
