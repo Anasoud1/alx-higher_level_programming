@@ -60,8 +60,8 @@ class Rectangle:
         '''function print rectangle'''
         if self.width == 0 or self.height == 0:
             return ""
-        return "\n".join(str(self.print_symbol) * self.width\
-                for h in range(self.height))
+        return "\n".join(str(self.print_symbol) * self.width \
+                        for h in range(self.height))
 
     def __repr__(self):
         '''function represente rectangle'''
