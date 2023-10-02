@@ -61,7 +61,7 @@ class Rectangle:
     def __repr__(self):
         '''function represente rectangle'''
         return "Rectangle({}, {})".format(self.width, self.height)
-    
+
     def __del__(self):
         '''function that print msg after deleting an instance of Rectangle'''
         print("Bye rectangle...")
