@@ -18,17 +18,16 @@ def matrix_divided(matrix, div):
         i += 1
         if not isinstance(li, list):
             raise TypeError("matrix must be a matrix (list of lists)"
-                        "of integers/floats")
+                                "integers/floats")
         for j in li:
             if type(j) not in (int, float):
                 raise TypeError("matrix must be a matrix (list of lists)"
-                            "of integers/floats")
+                "of integers/floats")
     while k + 1 != i:
         if len(matrix[k]) != len(matrix[k + 1]):
             raise TypeError("Each row of the matrix must have the"
-                        "same size")
+            "same size")
         k += 1
-    
     if type(div) not in (int, float):
         raise TypeError("div must be a number")
 
