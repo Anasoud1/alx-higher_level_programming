@@ -1,4 +1,6 @@
 #!/usr/bin/python3
-text_indentation = __import__('5-text_indentation').text_indentation
+""" Doc """
 
-text_indentation("    Hell")
+def add_integer(a, b=98):
+    """ Doc """
+    return int(a) + int(b)
