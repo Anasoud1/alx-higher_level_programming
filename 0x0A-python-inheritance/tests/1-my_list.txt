@@ -1,0 +1,13 @@
+The "1-my_list" module
+==========================
+
+Using "MyList"
+-------------------
+
+Import function from module:
+	>>> MyList = __import__('1-my_list').MyList
+
+Tests:
+	>>> my_list = MyList([1, 4, 2, 3, 5])
+	>>> my_list.print_sorted()
+	[1, 2, 3, 4, 5]
