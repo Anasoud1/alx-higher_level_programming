@@ -7,8 +7,8 @@ def add_attribute(ob, attr, value):
     Args:
         ob: object to add
         attr1 : attribute
-        attr2: value of the attribute
+        value: value of the attribute
     '''
-    if hasattr(ob, "__dict__"):
+    if not hasattr(ob, "__dict__"):
         raise TypeError("can't add new attribute")
-    setattr(obj, att, value)
+    setattr(ob, attr, value)
