@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-""" Doc """
+max_integer = __import__('6-max_integer').max_integer
 
-def add_integer(a, b=98):
-    """ Doc """
-    return int(a) + int(b)
+print(max_integer())
+print(max_integer([1, 3, 4, 2]))
