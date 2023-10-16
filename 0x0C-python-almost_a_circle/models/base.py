@@ -48,6 +48,8 @@ class Base:
             dummy = cls(2, 1, 8)
         elif cls.__name__ == "Square":
             dummy = cls(1)
+        else:
+            return None
         dummy.update(**dictionary)
         return dummy
 
