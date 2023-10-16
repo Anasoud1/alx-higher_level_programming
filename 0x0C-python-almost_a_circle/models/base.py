@@ -28,9 +28,10 @@ class Base:
     def save_to_file(cls, list_objs):
         '''writes the JSON string representation of list_objs to a file'''
         new = []
-        for obj in list_objs:
-            new.append(obj.to_dictionary())
         with open("{}.json".format(cls.__name__), "w", encoding="utf-8") as f:
+            if list_objs is not None:
+                for obj in list_objs:
+                    new.append(obj.to_dictionary())
             f.write(cls.to_json_string(new))
 
     @staticmethod
@@ -39,3 +40,20 @@ class Base:
         if not json_string or json_string is None:
             return []
         return json.loads(json_string)
+
+    @classmethod
+    def create(cls, **dictionary):
+        '''returns an instance with all attributes already set'''
+        dummy = cls(2, 1, 8)
+        dummy.update(**dictionary)
+        return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        '''returns a list of instances'''
+        with open("{}.json".format(cls.__name__), "w", encoding="utf-8") as f:
+            list_dict = cls.from_json_string(f.read())
+        new = []
+        for i in list_dict:
+            new.append(cls.create(i))
+        return new
