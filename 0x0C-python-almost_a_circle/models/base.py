@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 '''Define a class Base'''
 import json
+import csv
 
 
 class Base:
@@ -58,6 +59,32 @@ class Base:
         try:
             with open("{}.json".format(cls.__name__), encoding="utf-8") as f:
                 list_dict = cls.from_json_string(f.read())
+        except FileNotFoundError:
+            return []
+        new = []
+        for dic in list_dict:
+            obj = cls.create(**dic)
+            new.append(obj)
+        return new
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        '''serializes in CSV'''
+        new = []
+        with open("{}.csv".format(cls.__name__), "w", newline='') as f:
+            if list_objs is not None:
+                for obj in list_objs:
+                    new.append(obj.to_dictionary())
+            csvwriter = csv.writer(f)
+            csvwriter.writerow(cls.to_json_string(new))
+
+    @classmethod
+    def load_from_file_csv(cls):
+        '''returns a list of instances'''
+        try:
+            with open("{}.csv".format(cls.__name__), newline='') as f:
+                csvreader = csv.reader(f)
+                list_dict = cls.from_json_string(csvreader)
         except FileNotFoundError:
             return []
         new = []
