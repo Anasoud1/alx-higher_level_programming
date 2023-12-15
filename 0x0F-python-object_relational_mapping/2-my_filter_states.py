@@ -10,12 +10,11 @@ if __name__ == "__main__":
                                  port=3306)
 
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM states")
+    cursor.execute("SELECT * FROM states WHERE name='{}'".format(sys.argv[4]))
     rows = cursor.fetchall()
 
     for row in rows:
-        if row[1] == sys.argv[4]:
-            print(row)
+        print(row)
 
     cursor.close()
     connection.close()
