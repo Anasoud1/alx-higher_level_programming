@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-''' lists all State objects, and corresponding City objects, contained in the
-database hbtn_0e_101_usa'''
+'''lists all City objects from the database hbtn_0e_101_usa'''
 from relationship_state import State, Base
 from relationship_city import City
 from sqlalchemy import create_engine
@@ -16,7 +15,6 @@ if __name__ == "__main__":
     session = Session()
     states = session.query(State)
     for state in states:
-        print("{}: {}".format(state.id, state.name))
         for city in state.cities:
-            print("    {}: {}".format(city.id, city.name))
+            print("{}: {} -> {}".format(city.id, city.name, state.name))
     session.close()
