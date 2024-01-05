@@ -1,0 +1,22 @@
+ndentation`` module
+============================
+
+Using ``text_indentation``
+---------------------
+
+Import module:
+    >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Tests:
+    	>>> text_indentation("hello world")
+    	hello world
+
+    	>>> text_indentation("        hello")
+    	hello
+    
+    	>>> text_indentation("")
+    
+    	>>> text_indentation(1)
+    	Traceback (most recent call last):
+    	...
+    	TypeError: text must be a string
