@@ -14,8 +14,8 @@ if __name__ == "__main__":
         if not value_json:
             print("No result")
         else:
-            my_id = value_json("id")
-            my_name = value_json("name")
+            my_id = value_json.get("id")
+            my_name = value_json.get("name")
             print("[{}] {}".format(my_id, my_name))
     except ValueError:
         print("Not a valid JSON")
