@@ -11,10 +11,8 @@ request.get(url, (err, response, body) => {
   } else {
     datas = JSON.parse(body);
     for (const data of datas.results) {
-      for (const c of data.characters) {
-        if (c === pId) {
-          i += 1;
-        }
+      if (data.characters.includes(pId)) {
+        i += 1;
       }
     }
     console.log(i);
