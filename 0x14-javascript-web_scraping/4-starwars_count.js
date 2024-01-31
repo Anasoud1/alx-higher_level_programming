@@ -1,21 +1,22 @@
 #!/usr/bin/node
+
 const request = require('request');
 const url = process.argv[2];
-const pId = '18';
-let i = 0;
+const characterId = '18';
+let count = 0;
 
-request.get(url, (err, response, body) => {
-  if (err) {
-    console.error(err);
+request.get(url, (error, response, body) => {
+  if (error) {
+    console.log(error);
   } else {
-    const datas = JSON.parse(body).results;
-    datas.forEach(op => {
-      op.characters.forEach(chr => {
-        if (chr.includes(pId)) {
-          i++;
-	}
+    const data = JSON.parse(body);
+    data.results.forEach((film) => {
+      film.characters.forEach((character) => {
+        if (character.includes(characterId)) {
+          count += 1;
+        }
       });
     });
-    console.log(i);
+    console.log(count);
   }
 });
