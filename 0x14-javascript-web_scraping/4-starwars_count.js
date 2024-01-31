@@ -8,12 +8,12 @@ request.get(url, (err, response, body) => {
   if (err) {
     console.error(err);
   } else {
-    const datas = JSON.parse(body);
-    for (const data of datas.results) {
-      if (data.characters.includes(pId)) {
-        i += 1;
+    const datas = JSON.parse(body).results;
+    datas.forEach(op => {
+      if (op.characters.includes(pId)) {
+        i++;
       }
-    }
+    });
     console.log(i);
   }
 });
