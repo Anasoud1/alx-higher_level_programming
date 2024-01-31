@@ -1,7 +1,7 @@
 #!/usr/bin/node
 const request = require('request');
 const url = process.argv[2];
-const pId = 'https://swapi-api.alx-tools.com/api/people/18/';
+const pId = '18';
 let i = 0;
 
 request.get(url, (err, response, body) => {
@@ -10,9 +10,11 @@ request.get(url, (err, response, body) => {
   } else {
     const datas = JSON.parse(body).results;
     datas.forEach(op => {
-      if (op.characters.includes(pId)) {
-        i++;
-      }
+      op.characters.forEach(chr => {
+        if (chr.includes(pId)) {
+          i++;
+	}
+      });
     });
     console.log(i);
   }
